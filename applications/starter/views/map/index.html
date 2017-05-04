@@ -1,0 +1,36 @@
+{{extend 'layout.html'}}
+<style type="text/css">  
+
+#allmap{height:540px}  
+</style>  
+
+
+ <div class="box">
+  <div class="box-header with-border">
+          <h3 class="box-title">门店信息</h3>
+
+          <div class="box-tools pull-right">
+            
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fa fa-times"></i></button>
+          </div>
+   <div id="allmap" class="box-body">
+   
+   </div>
+  </div>
+</div>
+<script type="text/javascript">
+	// 百度地图API功能
+	var map = new BMap.Map("allmap");    // 创建Map实例
+    var point = new BMap.Point(113.488, 22.2699);
+	map.centerAndZoom(point, 11);  // 初始化地图,设置中心点坐标和地图级别
+	
+	
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    
+    function addMarker(point){
+	  var marker = new BMap.Marker(point);
+	  map.addOverlay(marker);
+	}
+    addMarker(point);
+</script>

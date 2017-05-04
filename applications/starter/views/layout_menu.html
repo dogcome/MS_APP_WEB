@@ -1,0 +1,76 @@
+{{#hidden = None if auth.user else 'hidden'}}
+
+{{if auth.user and is_user_member('admin'):}}
+
+<ul class="sidebar-menu">
+
+    <li class="header">Dogs &amp; Owners</li>
+
+    <li class="treeview">
+    {{=sidebar_menu_item('Dogs', icon='suitcase')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('View Dogs', URL('dog', 'list'), icon='list')}}
+        {{=sidebar_menu_item('Create Dog', URL('dog', 'create'), icon='pencil-square-o')}}
+        </ul>
+    </li>
+
+    <li class="treeview">
+    {{=sidebar_menu_item('Owners', icon='university')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('View Owners', URL('person', 'list'), icon='list')}}
+        {{=sidebar_menu_item('Create Owner', URL('person', 'create'), icon='pencil-square-o')}}
+        </ul>
+    </li>
+
+    <li class="treeview">
+    {{=sidebar_menu_item('Dog Owners', icon='university')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('View Dog Owners', URL('dog_owner', 'list'), icon='list')}}
+        {{=sidebar_menu_item('Create Dog Owner', URL('dog_owner', 'create'), icon='pencil-square-o')}}
+        </ul>
+    </li>
+
+    <li class="treeview {{=user_visibility('Admin')}}">
+    {{=sidebar_menu_item('Admin', icon='gears')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('Manage Content', URL('content','list'), icon='file-text-o')}}
+          {{=sidebar_menu_item('Manage Users', URL('appadmin','manage/users'), icon='users')}}
+        </ul>
+    </li>
+
+    <li class="treeview {{=user_visibility('Admin')}}">
+    {{=sidebar_menu_item('Super Admin', icon='gears')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('Manage Auth', URL('appadmin','manage/auth'), icon='wrench')}}
+          {{=sidebar_menu_item('Manage Database', URL('appadmin','manage/db'), icon='database')}}
+          {{=sidebar_menu_item('Super Admin!', URL('appadmin','#'), icon='cog')}}
+        </ul>
+    </li>
+
+</ul>
+
+{{pass}}
+
+<!-- Company Info for Guests -->
+
+<ul class="sidebar-menu">
+
+    <li class="header">管理后台</li>
+
+{{=sidebar_menu_item('概览', URL('default', 'index'), icon='bar-chart')}}
+{{=sidebar_menu_item('兼职', URL('pt', 'index'), icon='group')}}
+{{=sidebar_menu_item('报表', URL('default', 'about'), icon='table')}}
+
+
+
+ <li class="treeview">
+    {{=sidebar_menu_item('门店',  icon='bank')}}
+        <ul class="treeview-menu">
+        {{=sidebar_menu_item('走访记录', URL('map', 'index'), icon='map')}}
+        {{=sidebar_menu_item('查询', URL('pos', 'index'), icon='search-plus')}}
+        </ul>
+    </li>
+    
+{{=sidebar_menu_item('全职日常', URL('default', 'about'), icon='user')}}    
+    
+</ul>
